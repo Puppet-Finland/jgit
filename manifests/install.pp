@@ -3,12 +3,10 @@
 #
 # Installs jgit package
 #
-class jgit::install {
-
-    include jgit::params
+class jgit::install inherits jgit::params {
 
     package { 'jgit':
-        name => "${::jgit::params::package_name}",
         ensure => installed,
+        name   => $::jgit::params::package_name,
     }
 }

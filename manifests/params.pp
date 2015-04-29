@@ -10,7 +10,7 @@ class jgit::params {
             $package_name = 'jgit-cli'
         }
         default: {
-            $package_name = 'jgit-cli'
+            fail("Unsupported operating system ${::osfamily}!")
         }
     }
 }

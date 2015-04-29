@@ -6,7 +6,9 @@
 #
 # == Parameters
 #
-# None at the moment
+# [*manage*]
+#   Whether to manage jgit with Puppet or not. Valid values are 'yes' (default) 
+#   and 'no'.
 #
 # == Examples
 #
@@ -22,11 +24,12 @@
 # See file LICENSE for details
 #
 class jgit
+(
+    $manage = 'yes'
+)
 {
 
-# Rationale for this is explained in init.pp of the sshd module
-if hiera('manage_jgit', 'true') != 'false' {
-
-    include jgit::install
+if $manage == 'yes' {
+    include ::jgit::install
 }
 }
